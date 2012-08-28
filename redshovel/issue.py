@@ -48,10 +48,7 @@ def main():
     # well.
     util.configure_logging(opts.verbose)
 
-    if not opts.url.endswith("/"):
-        opts.url = opts.url + "/"
-    url = urlparse.urljoin(opts.url, "issues.json")
-
+    url = util.get_url(conf.url, "issues")
     headers = {"X-Redmine-API-Key": opts.api_key}
     query = {}
     for qs in dir(opts):

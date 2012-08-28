@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
+import urlparse
 
 
 def configure_logging(level):
@@ -27,3 +28,9 @@ def configure_logging(level):
     # Set up basic configuration, out to stderr with a reasonable
     # default format.
     logging.basicConfig(level=log_level)
+
+
+def get_url(base_url, type):
+    if not base_url.endswith("/"):
+        base_url = base_url + "/"
+    return urlparse.urljoin(base_url, type + ".json")
