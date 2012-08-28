@@ -26,8 +26,7 @@ rs-issue -u http://localhost/redmine/ -a xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 |  ID  | Tracker |     Status     | Priority |                                       Title                                        |      Assigned To       |
 +------+---------+----------------+----------+------------------------------------------------------------------------------------+-----------------------+
 | 1309 | Support |  In Progress   |  Normal  |                 Issues with creating bananas from in sputnik                       |                       |
-| 1306 | Support |      New       |  Normal  |
-Snapshot is a success                          |      Kam Orrison      |
+| 1306 | Support |      New       |  Normal  |                          Snapshot is a success                                     |      Kam Orrison      |
 +------+---------+----------------+----------+------------------------------------------------------------------------------------+-----------------------+
 ```
 
