@@ -20,8 +20,7 @@ Usage
 Example usage:
 
 ```sh
-rs-issue -u http://localhost/redmine/ -a xxxxxxxxxxxxxxxxxxxxxxxxxxxx
--vv --project-id rc-support --tracker-id 3 
+rs-issue -u http://localhost/redmine/ -a xxxxxxxxxxxxxxxxxxxxxxxxxxxx -vv --project-id rc-support --tracker-id 3 
 +------+---------+----------------+----------+----------------------------------------------+-----------------------+
 |  ID  | Tracker |     Status     | Priority |                 Title                        |      Assigned To      |
 +------+---------+----------------+----------+----------------------------------------------+-----------------------+
