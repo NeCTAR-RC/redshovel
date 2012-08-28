@@ -16,54 +16,37 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import optparse
 import urlparse
+import util
 
 import requests
+
+from config import Config
 
 LOG = logging.getLogger('rcshibboleth.account-agent')
 formatter = logging.Formatter(
     '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-usage = "usage: %prog [options]"
-optp = optparse.OptionParser(usage=usage)
-
-optp.add_option("-a", "--api", dest="api_key",
-                help="The api key to connect to redmine with")
-optp.add_option("-u", "--url", dest="url",
-                help="The url to redmine.")
-optp.add_option("-v", "--verbose",
-                action="count", dest="verbose",
-                help="verbosity the more v's the more verbose.")
-
 
 def main():
-    optp.add_option('-l', '--limit', dest='limit', action='store', type="int",
+    conf = Config('rs-issue')
+    conf.add_option('-l', '--limit', dest='limit', action='store', type="int",
                     help="number of results to return.")
-    optp.add_option('-o', '--offset', dest='offset', action='store',
+    conf.add_option('-o', '--offset', dest='offset', action='store',
                     type="int", help="skip this number of records.")
-    optp.add_option('-s', '--sort', dest='sort', action='store',
+    conf.add_option('-s', '--sort', dest='sort', action='store',
                     help="sort the results on column.")
-    optp.add_option('--status-id', dest='qs_status_id',
+    conf.add_option('--status-id', dest='qs_status_id',
                     help="the name of the status state, e.g. closed.")
-    optp.add_option('--project-id', dest='qs_project_id',
+    conf.add_option('--project-id', dest='qs_project_id',
                     help="the name of the project e.g. rc-support.")
-    optp.add_option('--tracker-id', dest='qs_tracker_id',
+    conf.add_option('--tracker-id', dest='qs_tracker_id',
                     help="the name of the tracker e.g. support.")
-    opts, args = optp.parse_args()
+    opts, args = conf.parse_args()
     # Here would be a good place to check what came in on the command
     # line and call optp.error("Useful message") to exit if all it not
     # well.
-
-    log_level = logging.WARNING  # default
-    if opts.verbose == 1:
-        log_level = logging.INFO
-    elif opts.verbose >= 2:
-        log_level = logging.DEBUG
-
-    # Set up basic configuration, out to stderr with a reasonable
-    # default format.
-    logging.basicConfig(level=log_level)
+    util.configure_logging(opts.verbose)
 
     if not opts.url.endswith("/"):
         opts.url = opts.url + "/"

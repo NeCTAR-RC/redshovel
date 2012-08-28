@@ -29,3 +29,11 @@ rs-issue -u http://localhost/redmine/ -a xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 | 1306 | Support |      New       |  Normal  |             Snapshot is a success            |      Kam Orrison      |
 +------+---------+----------------+----------+----------------------------------------------+-----------------------+
 ```
+
+To prevent repetition values can be specified in a *~/.redshovel* file
+in the format given below.:
+```conf
+[DEFAULT]
+url = http://localhost/redmine/
+api = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
