@@ -17,6 +17,10 @@ pip install git+git://github.com/NeCTAR-RC/redshovel.git@master
 Usage
 -----
 
+To authenticate you will need to use your access key, it can be
+obtained by pressing my account, then looking in the margin on the
+right for the show link under the API key heading.
+
 Example usage:
 
 ```sh
