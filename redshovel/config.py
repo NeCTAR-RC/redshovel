@@ -38,7 +38,7 @@ class Config(object):
         self.config.read(os.path.expanduser(file))
 
         # Add the common options.
-        self.default_section = set(('api', 'url', 'verbose'))
+        self.default_section = set(('api_key', 'url', 'verbose'))
         self.required = set()
         self.add_option("-a", "--api", dest="api_key", required=True,
                         help="The api key to connect to redmine with")

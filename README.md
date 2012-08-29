@@ -38,5 +38,5 @@ in the format given below.:
 ```conf
 [DEFAULT]
 url = http://localhost/redmine/
-api = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+api_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
