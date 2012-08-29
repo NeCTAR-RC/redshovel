@@ -16,16 +16,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import urlparse
-import util
-
-import requests
 
 from config import Config
+from client import RedMineClient
+import util
 
-LOG = logging.getLogger('rcshibboleth.account-agent')
+LOG = logging.getLogger('redshovel.issue')
 formatter = logging.Formatter(
     '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+
+class IssueClient(RedMineClient):
+    type = 'issues'
 
 
 def main():
@@ -48,15 +50,14 @@ def main():
     # well.
     util.configure_logging(opts.verbose)
 
-    url = util.get_url(conf.url, "issues")
-    headers = {"X-Redmine-API-Key": opts.api_key}
     query = {}
     for qs in dir(opts):
         if qs.startswith("qs_"):
             name = qs[3:]
             query[name] = getattr(opts, qs)
 
-    result = requests.get(url, headers=headers, params=query).json
+    client = IssueClient(opts.url, opts.api_key)
+    result = client.query(query)
 
     from prettytable import PrettyTable
     x = PrettyTable(field_names=["ID", "Tracker", "Status", "Priority",
